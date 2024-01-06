@@ -1,0 +1,95 @@
+@import "./variables.scss";
+
+.header{
+    display: flex;
+    background-color: antiquewhite;
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    li{
+        color: chartreuse;
+        font-size: 20px;
+    }
+}
+button{
+    font-size: 30px;
+    padding: 30px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    border: 3px solid green;
+}
+
+h1{
+color:$maincolor ;
+}
+p{
+    color:$maincolor ;
+}
+h2{
+    color:$maincolor;
+}
+@mixin headingstyle ($colors){
+   
+    font-family: 'Courier New', Courier, monospace;
+    color: $colors;
+}
+
+
+p{
+    @include headingstyle  (rgb(191, 162, 30));
+    font-size: 50px;
+}
+@for $i from 1 through 6{
+    h#{$i} {
+        @include headingstyle (rgb(0, 21, 128));
+    }
+}
+.button{
+    padding: 10px;
+    font-size: 20px;
+    color:$maincolor ;
+}
+.super-button{
+    @extend .button;
+    background-color: rgb(64, 97, 32);
+    
+}
+@for $i from 1 through 100{
+    .p#{$i} {
+        padding: #{$i}px;
+    }
+    .pt-#{$i} {
+        padding-top: #{$i}px;
+    }
+    .mt-#{$i} {
+        margin-top: #{$i}px;
+    }
+}
+ $items : home service contact login;
+ @each $main-items in $items{
+    .#{$main-items}{
+        color: yellow;
+        
+    }
+ }
+$i:6;
+$startsize:10px;
+@while $i>0{
+    h#{$i}{
+        color: rgb(24, 16, 85);
+      font-size:$startsize;
+    }
+    $i : $i - 1;
+  $startsize : $startsize + 10px;
+}
+$float:"right";
+@if $float== "left"{
+    h1{float: left;}
+
+}
+@else {
+    h1{float: right;}
+}
